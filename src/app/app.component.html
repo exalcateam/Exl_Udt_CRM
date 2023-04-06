@@ -1,0 +1,69 @@
+<!-- Navigation -->
+<div class="container">
+  <div class="navigation" *ngIf="hidetoolbar">
+    <ul>
+      <li>
+        <a href="#" >
+
+          <img src="assets/ude.png" style="width:100px;height: 100px;">
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <h3> Howdy Jay!!! </h3>
+        </a>
+      </li>
+      <li>
+        <a routerLink="\homepages\dashboard">
+
+          <mat-icon class="icon">home</mat-icon>
+          <span class="title">Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <mat-icon class="icon">supervisor_account</mat-icon>
+          <span class="title">Customers</span>
+        </a>
+      </li>
+      <li>
+        <a href="#" routerLink=>
+          <mat-icon class="icon">question_answer</mat-icon>
+          <span class="title">Message</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <mat-icon class="icon">help</mat-icon> <span class="title">Help</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <mat-icon class="icon">exit_to_app</mat-icon>
+          <span class="title">Signout</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <!-- ---main---- -->
+  <div class="main d-flex flex-column gap-5">
+    <div class="topbar" *ngIf="hidetoolbar">
+      <div class="toggle">
+        <mat-icon onclick="toggle()">menu</mat-icon>
+      </div>
+      <div class="search">
+        <label for="">
+          <input type="text" placeholder="search here">
+          <mat-icon>search</mat-icon>
+        </label>
+      </div>
+      <div class="user">
+        <img src="assets/jyo.jpg" alt="" srcset="" style="width: 150px;height: 150px;">
+      </div>
+    </div>
+    <div class="w-100 h-100 ps-5">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+
