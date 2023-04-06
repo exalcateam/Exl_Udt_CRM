@@ -1,0 +1,34 @@
+<div class="container-fluid h-100 d-flex justify-content-center align-items-center">
+    <div class="d-flex justify-content-center gap-4">
+
+        <form [formGroup]="createLoginCredential" class="d-flex flex-column align-items-center gap-4">
+
+            <h1>Create New user</h1>
+
+            <mat-form-field appearance="outline">
+                <mat-label>UserName</mat-label>
+                <input matInput type="text" formControlName="username">
+                <mat-error *ngIf="createLoginCredential.get('username')?.hasError('required')">
+                    Username is Required
+                </mat-error>
+                <mat-error *ngIf="createLoginCredential.get('username')?.hasError('pattern')">
+                    Username must contain 8-20 characters
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input matInput type="password" formControlName="password">
+                <mat-error *ngIf="createLoginCredential.get('password')?.hasError('required')">
+                    Password is Required
+                </mat-error>
+                <mat-error *ngIf="createLoginCredential.get('password')?.hasError('pattern')">
+                    Password must contain 8-16 caharacters
+                </mat-error>
+            </mat-form-field>
+                <button mat-flat-button color="primary">Create Account</button>
+                
+        </form>
+        
+    </div>
+</div>

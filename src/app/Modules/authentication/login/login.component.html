@@ -1,0 +1,35 @@
+        <div class="d-flex justify-content-center align-items-center w-100 h-100">
+            <div class=" d-flex ">
+            <form [formGroup]="loginCredential" class="d-flex flex-column gap-4 justify-content-center">
+               <!--Exalca Logo --> 
+                <div class="d-flex justify-content-center">
+                    <img src="assets/exalcalogo.png" alt="Exalca Logo" class="w-50">
+                </div>
+                <!--Username Input Field-->
+                <mat-form-field appearance="outline">
+                    <mat-icon matSuffix>account_circle</mat-icon>
+                    <mat-label>Username</mat-label>
+                    <input matInput type="text" class="d-flex" formControlName="username">
+                    <mat-error *ngIf="loginCredential.get('username')?.hasError('required')">
+                        Username is Required
+                    </mat-error>
+                </mat-form-field>
+                <!--Password Input Field-->
+                <mat-form-field appearance="outline">
+                    <mat-icon matSuffix>key</mat-icon>
+                    <mat-label>Password</mat-label>
+                    <input matInput type="password" class="d-flex" formControlName="password">
+                    <mat-error *ngIf="loginCredential.get('password')?.hasError('required')">
+                        Password is Required
+                    </mat-error>
+                </mat-form-field>
+                <a routerLink="/authentication/createaccount" class="text-decoration-none"><h3>Create account</h3></a>
+                <!--Forgotpassword Button-->
+                <div class="d-flex flex-column gap-3 align-items-center">
+                    <button mat-flat-button color="primary" class="w-50" (click)="userlogin()">Login</button>
+                    <a class="text-primary" routerLink="/authentication/forgotpassword">forgot password</a>
+                </div>
+
+            </form>
+        </div>
+</div>
