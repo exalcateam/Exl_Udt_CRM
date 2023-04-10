@@ -28,7 +28,9 @@ export class LoginComponent {
       .subscribe({
 
         next: (logs) => {
-          this._router.navigate(['/authentication/dashboard'])
+          this._router.navigate(['/homepages/dashboard']),
+          localStorage.setItem('data',JSON.stringify(logs))
+          console.log(logs);
         }, error: (err) => {
           alert('Invalid Username')
         }
