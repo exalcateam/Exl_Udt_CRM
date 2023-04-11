@@ -28,7 +28,7 @@ export class AppComponent {
       next:(res)=>{
         
         if(res instanceof NavigationEnd){
-          if(res.url.includes('login') || (res.url.includes('forgot') || (res.url.includes('create')))){
+          if(res.url.includes('admin') || res.url.includes('login') || (res.url.includes('forgot') || (res.url.includes('create')))){
             this.hidetoolbar = false;
           }
           else{
