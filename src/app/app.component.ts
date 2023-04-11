@@ -8,8 +8,11 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  b:any;
+  c:any;
   title = 'CustomerRelationship';
   hidetoolbar:boolean=false;
+  datetime=new Date();
   constructor(private _sub: ToolbarService, private _activatedRoute: Router) {
 
   }
@@ -34,5 +37,7 @@ export class AppComponent {
         }
       }
     })
+    this.b=localStorage.getItem('data');
+  this.c=(JSON.parse(this.b))
   }
 }

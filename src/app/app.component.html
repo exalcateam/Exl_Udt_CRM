@@ -10,11 +10,11 @@
       </li>
       <li>
         <a href="#">
-          <h3> Howdy Jay!!! </h3>
+          <h3> Howdy {{c.username}}!! </h3>
         </a>
       </li>
       <li>
-        <a routerLink="\homepages\dashboard">
+        <a routerLink="/homepages/dashboard">
 
           <mat-icon class="icon">home</mat-icon>
           <span class="title">Dashboard</span>
@@ -45,6 +45,7 @@
       </li>
     </ul>
   </div>
+
   <!-- ---main---- -->
   <div class="main d-flex flex-column gap-5">
     <div class="topbar" *ngIf="hidetoolbar">

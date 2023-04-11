@@ -1,0 +1,96 @@
+.cardBox{
+
+    position: relative;
+
+    width: 100%;
+
+    padding: 20px;
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    grid-gap:30px
+
+   }
+   .cardBox .carda{
+
+    position: relative;
+    
+    background: #fff;
+    
+    padding: 30px;
+    
+    border-radius: 20px;
+    
+    display: flex;
+    
+    justify-content: space-between;
+    
+    cursor: pointer;
+    
+    box-shadow: 0 7px 25px rgba(0,0,0,0.08);
+    
+    }
+
+    .cardBox .carda .numbers{
+
+        position: relative;
+        
+        font-weight: 500;
+        
+        font-size: 2.5rem;
+        
+        color: #2a2185;
+        
+        }
+        
+        .cardBox .carda .cardname{
+        
+        color:#999;
+        
+        font-size: 1.1rem;
+        
+        margin-top: 10px;
+        
+       
+        
+        }
+        
+        .cardBox .carda .mat-icon{
+        
+        font-size: 3.5 rem;
+        
+        color: #999;
+        
+        }
+        
+        .cardBox .carda:hover{
+        
+        background: #2a2185;
+        
+        }
+        
+        .cardBox .carda .iconbox{
+        
+        font-size: 3.5rem;
+        
+        color: #999;
+        
+        }
+        
+        .cardBox .carda:hover{
+        
+        background: #2a2185;
+        
+        }
+        
+        .cardBox .carda:hover .numbers,
+        
+        .cardBox .carda:hover .cardBox .carda .cardname,
+        
+        .cardbox .carda:hover .iconbox{
+        
+        color:#fff
+        
+        }
