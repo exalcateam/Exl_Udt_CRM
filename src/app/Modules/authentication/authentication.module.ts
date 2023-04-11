@@ -8,17 +8,18 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
-import { CreateaccountComponent } from './createaccount/createaccount.component'
+import { CreateaccountComponent } from './createaccount/createaccount.component';
+import { MatCardModule } from '@angular/material/card'
 
 const routes:Routes = [
-  {
-    path:'login',
-    component:LoginComponent
-  },
   {
     path:'',
     redirectTo:'login',
     pathMatch:'full'
+  },
+  {
+    path:'login',
+    component:LoginComponent
   },
   {
     path:'forgotpassword',
@@ -43,7 +44,8 @@ const routes:Routes = [
     ReactiveFormsModule,
     MatInputModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule
   ]
 })
 export class AuthenticationModule { }
