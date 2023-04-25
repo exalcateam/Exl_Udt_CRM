@@ -1,0 +1,82 @@
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <h1 class="d-flex justify-content-center">Company Details</h1>
+        <form [formGroup]="company" class="row gy-2 justify-content-center justify-content-sm-center justify-content-md-center w-75">
+                <!-- <div class="row bg-success justify-content-center justify-content-sm-center justify-content-md-center w-75"> -->
+                    <mat-form-field class="col-12 col-sm-6 col-md-4" appearance="outline">
+                        <mat-label>Company Id</mat-label>
+                        <input matInput type="number" formControlName="CompanyId">
+                    </mat-form-field>
+                    <mat-form-field class="col-12 col-sm-6 col-md-4" appearance="outline">
+                        <mat-label>Company Name</mat-label>
+                        <input matInput type="text" formControlName="CompanyName">
+                    </mat-form-field>
+                    <mat-form-field class="col-12 col-sm-6 col-md-4" appearance="outline">
+                        <mat-label>Location</mat-label>
+                        <input matInput type="text" formControlName="CompanyLocation">
+                    </mat-form-field>
+                
+
+                    <mat-form-field class="col-12 col-sm-6 col-md-4" appearance="outline">
+                        <mat-label>GST No</mat-label>
+                        <input matInput type="text" formControlName="GstNo">
+                    </mat-form-field>
+                    <mat-form-field class="col-12 col-sm-6 col-md-4" appearance="outline">
+                        <mat-label>Type of Customer</mat-label>
+                        <input matInput type="text" formControlName="CustomerType">
+                    </mat-form-field>
+                    <mat-form-field class="col-12 col-sm-6 col-md-4" appearance="outline">
+                        <mat-label>Photo</mat-label>
+                        <input matInput type="text" formControlName="Photos">
+                    </mat-form-field>
+                <!-- </div> -->
+        </form>
+
+        <form [formGroup]="person" class="row gy-2">
+            <div *ngFor="let controls of getcontrols();let i=index" class="row justify-content-center" formArrayName="personarr">
+                <form [formGroup]="controls" class="row gy-3 justify-content-center justify-content-sm-center justify-content-md-center w-75">
+                    <h1 class="d-flex justify-content-center">Person Details</h1>
+                    <!-- <div class="d-flex gap-4">
+                        <div>
+                            <div class="d-flex gap-5"> -->
+                                <mat-form-field class="col-12 col-sm-6 col-md-4" appearance="outline">
+                                    <mat-label>Person Name</mat-label>
+                                    <input matInput type="text" formControlName="Name">
+                                </mat-form-field>
+                                <mat-form-field class="col-12 col-sm-6 col-md-4" appearance="outline">
+                                    <mat-label>Designation</mat-label>
+                                    <input matInput type="text" formControlName="Designation">
+                                </mat-form-field>
+                                <mat-form-field class="col-12 col-sm-6 col-md-4" appearance="outline">
+                                    <mat-label>Mobile</mat-label>
+                                    <input matInput type="number" formControlName="MobileNo">
+                                </mat-form-field>
+                            <!-- </div>
+                            <div class="d-flex gap-5"> -->
+                                <mat-form-field class="col-12 col-sm-6 col-md-4" appearance="outline">
+                                    <mat-label>E-Mail</mat-label>
+                                    <input matInput type="email" formControlName="Email">
+                                </mat-form-field>
+                                <mat-form-field class="col-12 col-sm-6 col-md-4" appearance="outline">
+                                    <mat-label>Photo</mat-label>
+                                    <input matInput type="text" formControlName="Photo">
+                                </mat-form-field>
+                            <!-- </div>
+                        </div> -->
+                        <div class="d-flex justify-content-end">
+                            <button *ngIf="i!=0" (click)="remove(i)" mat-flat-button color="warn">Remove</button>
+                        </div>
+                    <!-- </div> -->
+                </form>
+            </div>
+            <div class="d-flex justify-content-start">
+                <button mat-flat-button color="primary" (click)="addnewperson()">Add Person Details</button>
+            </div>
+            <div class="d-flex justify-content-center gap-3">
+                <button routerLink="/homepages/companydetails" mat-flat-button color="warn">Cancel</button>
+                <button mat-flat-button color="primary" (click)="addnewcompany()">Save</button>
+            </div>
+        </form>
+    </div>
+   
+</div>

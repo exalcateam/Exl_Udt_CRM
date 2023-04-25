@@ -1,0 +1,33 @@
+<div class="container-fluid">
+    <div style="height: 60vh;" class="row justify-content-center align-items-center">
+        <h1 class="d-flex justify-content-center">Person Details</h1>
+        <form [formGroup]="persondetails" class="row w-75 justify-content-center">
+            
+                <mat-form-field class="col-12 col-sm-6 col-md-4" appearance="outline">
+                    <mat-label>Person Name</mat-label>
+                    <input matInput type="text" formControlName="Name">
+                </mat-form-field>
+                <mat-form-field class="col-12 col-sm-6 col-md-4" appearance="outline">
+                    <mat-label>Designation</mat-label>
+                    <input matInput type="text" formControlName="Designation">
+                </mat-form-field>
+                <mat-form-field class="col-12 col-sm-6 col-md-4" appearance="outline">
+                    <mat-label>Mobile</mat-label>
+                    <input matInput type="number" formControlName="MobileNo">
+                </mat-form-field>
+            
+                <mat-form-field class="col-12 col-sm-6 col-md-4" appearance="outline">
+                    <mat-label>E-Mail</mat-label>
+                    <input matInput type="email" formControlName="Email">
+                </mat-form-field>
+                <mat-form-field class="col-12 col-sm-6 col-md-4" appearance="outline">
+                    <mat-label>Photo</mat-label>
+                    <input matInput type="text" formControlName="Photo">
+                </mat-form-field>
+            <div class="d-flex gap-3 justify-content-sm-end">
+                <button routerLink="/homepages/persondetails" mat-flat-button color="warn">Cancel</button>
+                <button (click)="addperson()" mat-flat-button color="primary">Save</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -28,7 +28,7 @@ export class AppComponent {
       next:(res)=>{
         
         if(res instanceof NavigationEnd){
-          if(res.url.includes('admin') || res.url.includes('login') || (res.url.includes('forgot') || (res.url.includes('create')))){
+          if(res.url.includes('') || res.url.includes('admin') || res.url.includes('login') || (res.url.includes('forgot'))){
             this.hidetoolbar = false;
           }
           else{
@@ -39,5 +39,24 @@ export class AppComponent {
     })
     this.b=localStorage.getItem('data');
   this.c=(JSON.parse(this.b))
+
+
+
+
+  this._activatedRoute.events.subscribe({
+    next:(response) => {
+      if(response instanceof NavigationEnd)
+      {
+        if(response.urlAfterRedirects.includes('login') || response.url.includes('forgot') || response.url.includes('newcompanydetails')
+            || response.url.includes('newpersondetails') || response.url.includes('newuser'))
+            {
+              this.hidetoolbar = false
+            }
+            else{
+              this.hidetoolbar = true
+            }
+      }
+    }
+  })
   }
 }

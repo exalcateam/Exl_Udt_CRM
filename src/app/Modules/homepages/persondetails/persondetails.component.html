@@ -1,0 +1,27 @@
+<div class="container-fluid">
+    <div class="d-flex justify-content-end mt-5">
+        <button *ngIf="addbutton" routerLink="/getdetailspages/newpersondetails" mat-flat-button color="primary">Add Person</button>
+    </div>
+    <div>
+        <table mat-table [dataSource]="datasource">
+            <ng-container matColumnDef="personname-col">
+                <th mat-header-cell *matHeaderCellDef>Person Name</th>
+                <td mat-cell *matCellDef="let data">{{data.name}}</td>
+            </ng-container>
+            <ng-container matColumnDef="designation-col">
+                <th mat-header-cell *matHeaderCellDef>Designation</th>
+                <td mat-cell *matCellDef="let data">{{data.designation}}</td>
+            </ng-container>
+            <ng-container matColumnDef="mobileno-col">
+                <th mat-header-cell *matHeaderCellDef>Mobile No</th>
+                <td mat-cell *matCellDef="let data">{{data.mobileNo}}</td>
+            </ng-container>
+            <ng-container matColumnDef="email-col">
+                <th mat-header-cell *matHeaderCellDef>E-Mail</th>
+                <td mat-cell *matCellDef="let data">{{data.email}}</td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="person_col"></tr>
+            <tr mat-row *matRowDef="let row;columns:person_col;"></tr>
+        </table>
+    </div>
+</div>

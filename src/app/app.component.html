@@ -1,4 +1,4 @@
-<!-- Navigation -->
+<!-- Navigation
 <div class="container-fluid">
   <div class="navigation" *ngIf="hidetoolbar">
     <ul>
@@ -46,7 +46,7 @@
     </ul>
   </div>
 
-  <!-- ---main---- -->
+  ---main----
   <div class="main d-flex flex-column gap-5">
     <div class="topbar" *ngIf="hidetoolbar">
       <div class="toggle">
@@ -67,4 +67,28 @@
     </div>
   </div>
 </div>
+ -->
 
+
+
+ <mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <div *ngIf="hidetoolbar" class="d-flex flex-column margin">
+      <div class="content">Home</div>
+      <div class="content">Dashboard</div>
+      <div class="content">Company Details</div>
+      <div class="content">About</div>
+    </div>
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <div *ngIf="hidetoolbar" class="toolbar d-flex align-items-center">
+      <button type="button" mat-button (click)="drawer.toggle()">
+     <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+    <div class="sidenav-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</mat-drawer-container>

@@ -1,0 +1,40 @@
+<div class="container-fluid row justify-content-center vh-100 align-items-center">
+        <form [formGroup]="newuser" class="d-flex flex-column align-items-center gap-4">
+            <h1 class="d-flex justify-content-center">Create User</h1>
+            <mat-form-field class="col-8 col-sm-6 col-md-3" appearance="outline">
+                <mat-label>Username</mat-label>
+                <input matInput type="text" formControlName="Username">
+                <mat-error *ngIf="this.newuser.get('Username')?.hasError('required')">
+                    Username is Required
+                </mat-error>
+                <mat-error *ngIf="this.newuser.get('Username')?.hasError('pattern')">
+                    Username must contain 8 characters
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="col-8 col-sm-6 col-md-3" appearance="outline">
+                <mat-label>Password</mat-label>
+                <input matInput type="password" formControlName="Password">
+                <mat-error *ngIf="this.newuser.get('Password')?.hasError('required')">
+                    Password is Required
+                </mat-error>
+                <mat-error *ngIf="this.newuser.get('Password')?.hasError('pattern')" style="width: 300px;">
+                    Password must contain one special character, uppercase, lowercase,numbers
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="col-8 col-sm-6 col-md-3" appearance="outline">
+                <mat-label>Role</mat-label>
+                <input matInput type="text" placeholder="Pick one" formControlName="Role" [matAutocomplete]="auto">
+                <mat-error *ngIf="this.newuser.get('Role')?.hasError('required')">
+                    Role is Required
+                </mat-error>
+                <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let Role of Roles" [value]="Role">
+                        {{Role}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+            <div class="d-flex justify-content-center">
+                <button (click)="createuser()" mat-flat-button color="primary">Create</button>
+            </div>
+        </form>
+</div>
