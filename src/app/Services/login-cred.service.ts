@@ -24,7 +24,6 @@ export class LoginCredService {
   }
 
   addcomponayandperson(companydetails:any): Observable<any>{
-    console.log("CompanyDetails : ",companydetails)
     return this._httpClient.post(this.url + 'CompanyDetails/CreateCompanyandPerson',companydetails)
   }
 
@@ -50,11 +49,8 @@ export class LoginCredService {
   {
     this.user = localStorage.getItem('UserData')
     this.userRole = JSON.parse(this.user)
-    console.log("Service : ",this.userRole)
-    console.log("Service Role : ",this.userRole.role)
     if(this.userRole.role == 'Admin')
     {
-      console.log("Service Inside Role",this.userRole.role)
       return true;
     }
     return false;
@@ -63,9 +59,32 @@ export class LoginCredService {
 
   getpf(pdf:any) : Observable<any>
   {
-    console.log("Services : ",pdf)
     return this._httpClient.get(this.url + 'LoginCred/GetFile',pdf)
   }
 
+  deletecompany(id:any) : Observable<any>
+  {
+    return this._httpClient.delete(this.url + `CompanyDetails/DeleteCompany?id=${id}`)
+  }
+
+  deleteperson(id:any) : Observable<any>
+  {
+    return this._httpClient.delete(this.url + `CompanyDetails/DeletePerson?id=${id}`)
+  }
+
+  forgotpassword(user:LoginCredential) : Observable<any>
+  {
+    return this._httpClient.patch<LoginCredential>(this.url + 'LoginCred/ForgotPassword',user)
+  }
+
+  changepassword(newpassword:any) : Observable<any>
+  {
+    return this._httpClient.patch(this.url + 'LoginCred/ChangePassword',newpassword)
+  }
+
+  deleteaccount(delaccount:string)
+  {
+    return this._httpClient.delete(this.url + `LoginCred/DeleteAccount?newaccount=${delaccount}`)
+  }
 
 }

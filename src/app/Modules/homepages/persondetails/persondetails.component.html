@@ -1,6 +1,6 @@
-<div class="container-fluid">
+<div class="container-fluid d-flex flex-column gap-5">
     <div class="d-flex justify-content-end mt-5">
-        <button *ngIf="addbutton" routerLink="/getdetailspages/newpersondetails" mat-flat-button color="primary">Add Person</button>
+        <button *ngIf="addbutton" routerLink="/getdetailspages/newpersondetails" [queryParams]="{Title:'Person Details',button:'Save'}" mat-flat-button color="primary">Add Person</button>
     </div>
     <div>
         <table mat-table [dataSource]="datasource">
@@ -19,6 +19,18 @@
             <ng-container matColumnDef="email-col">
                 <th mat-header-cell *matHeaderCellDef>E-Mail</th>
                 <td mat-cell *matCellDef="let data">{{data.email}}</td>
+            </ng-container>
+            <ng-container matColumnDef="edit-col">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let data">
+                    <button (click)="update(data)" mat-flat-button color="accent">Edit</button>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="remove-col">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let data">
+                    <button (click)="remove(data)" mat-flat-button color="warn">Remove</button>
+                </td>
             </ng-container>
             <tr mat-header-row *matHeaderRowDef="person_col"></tr>
             <tr mat-row *matRowDef="let row;columns:person_col;"></tr>

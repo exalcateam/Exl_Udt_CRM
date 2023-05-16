@@ -26,7 +26,16 @@
                     Password must contain 8-16 caharacters
                 </mat-error>
             </mat-form-field>
-                <button mat-flat-button color="primary">Create Account</button>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Role</mat-label>
+                <mat-select formControlName="role">
+                    <mat-option *ngFor="let role of Roles" [value]="role">
+                        {{role}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+                <button (click)="createaccount()" mat-flat-button color="primary">Create Account</button>
                 
         </form>
         

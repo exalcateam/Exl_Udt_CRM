@@ -14,7 +14,8 @@ export class AppComponent {
   hidetoolbar:boolean=false;
   datetime=new Date();
   constructor(private _sub: ToolbarService, private _activatedRoute: Router) {
-
+    this.b=localStorage.getItem('UserData');
+    this.c=(JSON.parse(this.b))
   }
   ngOnInit() {
     // this._sub.hide.subscribe((hide) => {
@@ -37,10 +38,7 @@ export class AppComponent {
         }
       }
     })
-    this.b=localStorage.getItem('data');
-  this.c=(JSON.parse(this.b))
-
-
+    
 
 
   this._activatedRoute.events.subscribe({
@@ -48,7 +46,7 @@ export class AppComponent {
       if(response instanceof NavigationEnd)
       {
         if(response.urlAfterRedirects.includes('login') || response.url.includes('forgot') || response.url.includes('newcompanydetails')
-            || response.url.includes('newpersondetails') || response.url.includes('newuser'))
+            || response.url.includes('newpersondetails') || response.url.includes('newuser') || (response.url.includes('changepassword')))
             {
               this.hidetoolbar = false
             }

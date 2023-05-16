@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { LoginCredService } from 'src/app/Services/login-cred.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { LoginCredService } from 'src/app/Services/login-cred.service';
 })
 export class PersondetailsComponent {
 
-  person_col = ['personname-col','designation-col','mobileno-col','email-col']
+  person_col:any=[]
 
   datasource = new MatTableDataSource
 
@@ -18,13 +19,31 @@ export class PersondetailsComponent {
   persondata:any
   addbutton:boolean
 
-  constructor(private _storage:LoginCredService)
+  constructor(private _storage:LoginCredService,private _router:Router)
   {
     this.id = localStorage.getItem('personData')
     this.personId = JSON.parse(this.id)
 
 
-    _storage.getperson(this.personId.companyId)
+    this.getpersonlist()
+    
+    this.addbutton = _storage.getUserRole()
+
+    if(this.addbutton == true)
+    {
+      this.person_col = ['personname-col','designation-col','mobileno-col','email-col','edit-col','remove-col']
+    }
+    else
+    {
+      this.person_col = ['personname-col','designation-col','mobileno-col','email-col']
+    }
+
+
+  }
+
+  getpersonlist()
+  {
+    this._storage.getperson(this.personId.companyId)
     .subscribe({
       next: (data) => {
         this.persondata = data
@@ -33,9 +52,27 @@ export class PersondetailsComponent {
         console.log(err)
       },
     })
-    
-    this.addbutton = _storage.getUserRole()
+  }
 
+  remove(id:any)
+  {
+    console.log("Id : ",id)
+    this._storage.deleteperson(id.personId)
+    .subscribe({
+      next: (data) => {
+        this.getpersonlist()
+        console.log("Person Deleted Successfully")
+      },error(err) {
+        console.log(err)
+      },
+    })
+  }
+
+
+
+  update(value:any)
+  {
+    this._router.navigate(['/getdetailspages/newpersondetails'],{queryParams:{Title:'Update Person Details',button:'Update',val:value}});
   }
 
 }

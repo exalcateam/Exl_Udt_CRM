@@ -75,17 +75,33 @@
   <mat-drawer #drawer class="example-sidenav" mode="side">
     <div *ngIf="hidetoolbar" class="d-flex flex-column margin">
       <div class="content">Home</div>
-      <div class="content">Dashboard</div>
-      <div class="content">Company Details</div>
+      <div routerLink="/homepages/dashboard" class="content">Dashboard</div>
+      <div routerLink="/homepages/companydetails" class="content">Company Details</div>
       <div class="content">About</div>
     </div>
   </mat-drawer>
 
   <div class="example-sidenav-content">
-    <div *ngIf="hidetoolbar" class="toolbar d-flex align-items-center">
-      <button type="button" mat-button (click)="drawer.toggle()">
-     <mat-icon>menu</mat-icon>
-      </button>
+    <div *ngIf="hidetoolbar" class="toolbar d-flex align-items-center justify-content-between">
+      <div class="col-2">
+        <button type="button" mat-button (click)="drawer.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+      <div class="col-2">
+        <div [matMenuTriggerFor]="menu" style="cursor: pointer;width: 150px;">
+          <img class="p-2" style="width: 50px;" src="/assets/user.png" alt="User Logo">
+          <b>{{c.username}}</b>
+        </div>
+        <mat-menu #menu="matMenu">
+          <mat-card class="p-3 d-flex gap-2">
+          <img class="p-3" style="height: 120px; width: 150px;" src="/assets/user.png" alt="User Logo">
+          <div style="cursor: pointer;" class="effect p-2">Profile</div>
+          <div routerLink="/updations/changepassword" style="cursor: pointer;" class="effect p-2">Change Password</div>
+          <div routerLink="/authentication/login" style="cursor: pointer;" class="effect p-2">Logout</div>
+          </mat-card>
+        </mat-menu>
+      </div>
     </div>
     <div class="sidenav-content">
       <router-outlet></router-outlet>
