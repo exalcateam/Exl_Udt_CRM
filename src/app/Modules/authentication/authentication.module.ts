@@ -9,7 +9,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { CreateaccountComponent } from './createaccount/createaccount.component';
-import { MatCardModule } from '@angular/material/card'
+import { MatCardModule } from '@angular/material/card';
+import { MatSelectModule } from '@angular/material/select';
+import { DeleteaccountComponent } from './deleteaccount/deleteaccount.component';
 
 const routes:Routes = [
   {
@@ -28,6 +30,10 @@ const routes:Routes = [
   {
     path:'createaccount',
     component:CreateaccountComponent
+  },
+  {
+    path:'deleteaccount',
+    component:DeleteaccountComponent
   }
 ];
 
@@ -35,7 +41,8 @@ const routes:Routes = [
   declarations: [
     LoginComponent,
     ForgotpasswordComponent,
-    CreateaccountComponent
+    CreateaccountComponent,
+    DeleteaccountComponent
   ],
   imports: [
     CommonModule,
@@ -45,7 +52,8 @@ const routes:Routes = [
     MatInputModule,
     MatIconModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatSelectModule
   ]
 })
 export class AuthenticationModule { }

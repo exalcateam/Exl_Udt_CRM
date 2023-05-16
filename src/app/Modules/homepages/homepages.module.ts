@@ -22,7 +22,7 @@ const routes:Routes=[
 {
   path:'persondetails',
   component:PersondetailsComponent
-}
+},
 ];
 
 @NgModule({

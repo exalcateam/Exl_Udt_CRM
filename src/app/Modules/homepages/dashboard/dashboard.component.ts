@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ToolbarService } from 'src/app/Services/toolbar.service';
+import { LoginCredService } from 'src/app/Services/login-cred.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,8 +7,12 @@ import { ToolbarService } from 'src/app/Services/toolbar.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
-  constructor(private _sub:ToolbarService){
-    this._sub.hidetoolbar(true);
+
+  hideCreateDelete:boolean
+
+  constructor(private _storage:LoginCredService)
+  {
+    this.hideCreateDelete = _storage.getUserRole()
   }
  
 }

@@ -249,6 +249,7 @@
     align-items: center;
     margin-left: 5px;
     padding-left: 30px;
+    cursor: pointer;
   }
 
   .content:hover{
@@ -265,3 +266,14 @@
   {
     height: 90vh;
   }
+  
+
+.mat-mdc-menu-content
+{
+  padding: 0px !important;
+}
+
+.effect:hover
+{
+  background-color: lemonchiffon;
+}

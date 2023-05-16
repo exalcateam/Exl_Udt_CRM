@@ -11,13 +11,14 @@ import { LoginCredService } from 'src/app/Services/login-cred.service';
 export class CompanydetailsComponent {
 
 
-  cols = ['companyid-col','companyname-col','location-col','gst-col','toc-col']
+  cols:any=[]
   datasource = new MatTableDataSource()
   datas:any
   addbutton:boolean=true
 
   constructor(private _storage:LoginCredService,private _route:Router)
   {
+
     _storage.getcompany()
     .subscribe({
       next:(data) => {
@@ -29,8 +30,18 @@ export class CompanydetailsComponent {
     })
 
     this.addbutton = _storage.getUserRole()
-    console.log(this.addbutton)
+    console.log("Add Button : ",this.addbutton)
     
+    if(this.addbutton == true)
+    {
+      this.cols = ['companyid-col','companyname-col','location-col','gst-col','toc-col','remove-col']
+    }
+    else
+    {
+      this.cols = ['companyid-col','companyname-col','location-col','gst-col','toc-col']
+    }
+
+
   }
 
   getperson(a:any)
@@ -39,23 +50,17 @@ export class CompanydetailsComponent {
     this._route.navigate(['/homepages/persondetails'])
   }
 
-
-n!:string
-  CreatePdf(pdf:any)
+  remove(remove:any)
   {
-    this.n = "<h1>Santhosh M</h1>"
-    console.log("PDF : ",this.n)
-    this._storage.getpf(this.n)
+    console.log("Remove : ",remove)
+    this._storage.deletecompany(remove.companyId)
     .subscribe({
-      next: (data) => 
-      {
-        console.log(data)
-      },
-      error(err) {
+      next: (data) => {
+        console.log("Data : ",data)
+      },error(err) {
         console.log(err)
       },
     })
   }
-
 
 }
