@@ -35,6 +35,8 @@
                     </mat-option>
                 </mat-select>
             </mat-form-field>
+            <input type="file" style="display: none;" #fileupload (change)="selectimage($event)">
+                <button mat-flat-button color="warn" (click)="fileupload.click()">Select Image</button>
                 <button (click)="createaccount()" mat-flat-button color="primary">Create Account</button>
                 
         </form>

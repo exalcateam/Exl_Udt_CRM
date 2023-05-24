@@ -90,13 +90,13 @@
       </div>
       <div class="col-2">
         <div [matMenuTriggerFor]="menu" style="cursor: pointer;width: 150px;">
-          <img class="p-2" style="width: 50px;" src="/assets/user.png" alt="User Logo">
-          <b>{{c.username}}</b>
+          <img class="p-2" style="width: 50px;" [src]="ImageURL" [alt]="imagename">
+          <b>{{userdetails.username}}</b>
         </div>
         <mat-menu #menu="matMenu">
           <mat-card class="p-3 d-flex gap-2">
-          <img class="p-3" style="height: 120px; width: 150px;" src="/assets/user.png" alt="User Logo">
-          <div style="cursor: pointer;" class="effect p-2">Profile</div>
+          <img class="p-3" style="height: 120px; width: 150px;" [src]="ImageURL" [alt]="imagename">
+          <div style="cursor: pointer;" class="effect p-2" (click)="openuserdialog()">Profile</div>
           <div routerLink="/updations/changepassword" style="cursor: pointer;" class="effect p-2">Change Password</div>
           <div routerLink="/authentication/login" style="cursor: pointer;" class="effect p-2">Logout</div>
           </mat-card>

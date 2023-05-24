@@ -22,6 +22,10 @@ const routes: Routes = [
   {
     path:'updations',
     loadChildren:() => import('./Modules/updations/updations.module').then(data => data.UpdationsModule)
+  },
+  {
+    path:'uploadimages',
+    loadChildren:() => import('./Modules/uploadimages/uploadimages.module').then(data => data.UploadimagesModule)
   }
 ];
 
