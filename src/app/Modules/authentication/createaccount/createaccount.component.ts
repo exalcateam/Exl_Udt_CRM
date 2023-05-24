@@ -14,6 +14,7 @@ export class CreateaccountComponent {
 
   createLoginCredential:FormGroup
   Roles:any = ['Admin','User']
+  selectedfile:any
 
 
   constructor(private _createBuilder:FormBuilder,private _storage:LoginCredService,private _router:Router)
@@ -25,10 +26,22 @@ export class CreateaccountComponent {
     })
   }
 
+  selectimage(event:any)
+  {
+    this.selectedfile = event.target.files[0];
+    console.log("Event : ",event)
+    console.log("Selected File : ",this.selectedfile)
+  }
+
 
   createaccount()
   {
     console.log(this.createLoginCredential.value)
+    const formdata = new FormData()
+    formdata.append(this.selectedfile.name,this.selectedfile,this.selectedfile.name);
+    formdata.append("username",this.createLoginCredential.value.username);
+    console.log("Form Data : ",formdata)
+
     this._storage.adduser(this.createLoginCredential.value)
     .subscribe({
       next: (data) => {
@@ -38,6 +51,17 @@ export class CreateaccountComponent {
         console.log("Account Not Created")
       },
     })
+
+
+    this._storage.addimage(formdata)
+    .subscribe({
+      next(value) {
+        console.log("Image Uploded Succesfully")
+      },error(err) {
+        console.log("Image not Uploded")
+      },
+    })
+    
   }
 
 }

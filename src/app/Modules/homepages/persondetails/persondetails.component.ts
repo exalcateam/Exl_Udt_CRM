@@ -14,6 +14,7 @@ export class PersondetailsComponent {
 
   datasource = new MatTableDataSource
 
+  selecetdfile:any
   id:any
   personId:any
   persondata:any
@@ -74,5 +75,35 @@ export class PersondetailsComponent {
   {
     this._router.navigate(['/getdetailspages/newpersondetails'],{queryParams:{Title:'Update Person Details',button:'Update',val:value}});
   }
+
+
+
+  selected(event:any)
+  {
+    this.selecetdfile = event.target.files[0];
+    console.log("Event : ",event)
+    console.log("Selected File : ",this.selecetdfile)
+  }
+
+
+  upload()
+  {
+    const formdata = new FormData()
+    formdata.append(this.selecetdfile.name,this.selecetdfile,this.selecetdfile.name);
+    formdata.append("Id",this.personId.companyId);
+    console.log("Form Data : ",formdata)
+    // this._storage.uploadimage(formdata)
+    // .subscribe({
+    //   next: (data) =>
+    //   {
+    //     console.log("Image Uploaded Successfully",data)
+    //   }
+    //   ,error(err) {
+    //     console.log("Image Uploaded Error",err)
+    //   }
+    // })
+  }
+
+
 
 }

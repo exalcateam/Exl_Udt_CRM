@@ -32,6 +32,9 @@ export class LoginComponent {
           this.UserData = logs
           localStorage.setItem('UserData',JSON.stringify(this.UserData))
           this._router.navigate(['/homepages/dashboard'])
+
+          this._logincreds.sendrefresh(logs)
+
         }, error: (err) => {
           console.log(err)
         }

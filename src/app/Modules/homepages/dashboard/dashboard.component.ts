@@ -9,10 +9,21 @@ import { LoginCredService } from 'src/app/Services/login-cred.service';
 export class DashboardComponent {
 
   hideCreateDelete:boolean
+  selecetdfile:any
+  id:any
+  userid:any
 
   constructor(private _storage:LoginCredService)
   {
     this.hideCreateDelete = _storage.getUserRole()
+
+
+    this.id = localStorage.getItem('UserData')
+    this.userid = JSON.parse(this.id)
   }
  
+
+  
+
 }
+

@@ -37,3 +37,9 @@
         </table>
     </div>
 </div>
+
+<div>
+    <input style="display: none;" type="file" #fileupload (change)="selected($event)">
+    <img style="height: 115px;cursor: pointer;" src="/assets/user.png" alt="User" (click)="fileupload.click()">
+    <button (click)="upload()">Upload</button>
+</div>
